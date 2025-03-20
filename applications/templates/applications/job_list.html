@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Job Applications</title>
+    </head>
+    <body>
+        <h1>Job Applications</h1>
+        <a href="{% url 'add_job' %}">Add a New Job</a>
+        <ul>
+            {% for job in jobs %}
+                <li>
+                    <strong>{{ job.position }}</strong> at {{ job.company }} ({{ job.status }}) - 
+                    <a href="{% url 'edit_job' job.id %}">Edit</a>
+                    <a href="{% url 'delete_job' job.id %}">Delete</a>
+                </li>
+            {% empty %}
+                <p>No job applications.</p>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
