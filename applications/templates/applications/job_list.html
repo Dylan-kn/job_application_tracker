@@ -4,18 +4,23 @@
 
 {% block content %}
     <h2>Job Applications</h2>
-    <p>DEBUG: This template is rendering.</p>
     <table border="1">
         <tr>
             <th>Position</th>
             <th>Company</th>
             <th>Status</th>
+            <th>Notes</th>
         </tr>
         {% for job in jobs %}
         <tr>
             <td> {{ job.position }}</td>
             <td> {{ job.company }}</td>
             <td> {{ job.status }}</td>
+            <td> {{ job.notes }}</td>
+            <td>
+                <a href="{% url 'edit_job' job.id %}">Edit</a>
+                <a href="{% url 'delete_job' job.id %}">Delete</a>
+            </td>
         </tr>
         {% endfor %}
     </table>
