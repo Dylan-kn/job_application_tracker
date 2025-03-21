@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-h41t=wpy%q0c(=i)d&s^qpli^1e&4f$48#tb3i3b17_0*xc=@$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://job-application-tracker-zboz.onrender.com']
+ALLOWED_HOSTS = ['job-application-tracker-zboz.onrender.com']
 
 
 # Application definition
