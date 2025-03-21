@@ -5,6 +5,7 @@ from .forms import JobApplicationForm
 
 def job_list(request):
     jobs = JobApplication.objects.all()
+    print("DEBUG: Retrieved jobs:", jobs)
     return render(request, "applications/job_list.html", {"jobs": jobs})
 
 

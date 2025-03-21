@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Add Job Application</title>
-    </head>
-    <body>
-        <h1>Add a New Job</h1>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Add Job</button>
-        </form>
-        <a href="{% url 'job_list' %}">Back to Job List</a>
-    </body>
-</html>
+{% extends "applications/base.html" %}
+
+{% block title %}Add Job{% endblock %}
+
+{% block content %}
+    <h2>Add a New Job</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Job</button>
+    </form>
+{% endblock %}

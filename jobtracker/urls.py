@@ -5,5 +5,5 @@ from jobtracker.views import homepage
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homepage, name="homepage"),
-    #path('applications/', include('applications.urls')),
+    path('applications/', include('applications.urls')),
 ]

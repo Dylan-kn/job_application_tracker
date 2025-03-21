@@ -15,7 +15,6 @@ class JobApplication(models.Model):
         choices=status_choices,
         default="Applied"
     )
-    date_applied = models.DateField(auto_now_add=True)
     notes = models.TextField(blank=True)
 
     def __str__(self):

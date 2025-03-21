@@ -1,5 +1,4 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import redirect
 
 def homepage(request):
-    return redirect('/admin/')
+    return redirect('/job_list/')

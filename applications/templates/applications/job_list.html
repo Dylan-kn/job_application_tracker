@@ -1,21 +1,22 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Job Applications</title>
-    </head>
-    <body>
-        <h1>Job Applications</h1>
-        <a href="{% url 'add_job' %}">Add a New Job</a>
-        <ul>
-            {% for job in jobs %}
-                <li>
-                    <strong>{{ job.position }}</strong> at {{ job.company }} ({{ job.status }}) - 
-                    <a href="{% url 'edit_job' job.id %}">Edit</a>
-                    <a href="{% url 'delete_job' job.id %}">Delete</a>
-                </li>
-            {% empty %}
-                <p>No job applications.</p>
-            {% endfor %}
-        </ul>
-    </body>
-</html>
+{% extends "applications/base.html" %}
+
+{% block title %}Job Applications{% endblock %}
+
+{% block content %}
+    <h2>Job Applications</h2>
+    <p>DEBUG: This template is rendering.</p>
+    <table border="1">
+        <tr>
+            <th>Position</th>
+            <th>Company</th>
+            <th>Status</th>
+        </tr>
+        {% for job in jobs %}
+        <tr>
+            <td> {{ job.position }}</td>
+            <td> {{ job.company }}</td>
+            <td> {{ job.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
