@@ -1,11 +1,38 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import JobApplication
 from .forms import JobApplicationForm
+import requests
+from django.conf import settings
+
 
 
 def job_list(request):
     jobs = JobApplication.objects.all()
-    return render(request, "applications/job_list.html", {"jobs": jobs})
+
+    weather_data = {}
+    for job in jobs:
+        if job.city:
+            try:
+                weather_api_key = settings.OPENWEATHERMAP_API_KEY
+                weather_url = (
+                    f"http://api.openweathermap.org/data/2.5/weather?q={job.city}&units=imperial&appid={weather_api_key}"
+                )
+                weather_response = requests.get(weather_url)
+                if weather_response.status_code == 200:
+                    wdata = weather_response.json()
+                    weather_data[job.id] = {
+                        "temp": wdata["main"]["temp"],
+                        "condition": wdata["weather"][0]["main"],
+                        "icon": wdata["weather"][0]["icon"],
+                    }
+            except Exception:
+                weather_data[job.id] = None
+                
+
+    return render(request, "applications/job_list.html", {
+        "jobs": jobs,
+        "weather_data": weather_data,
+        })
 
 
 def add_job(request):

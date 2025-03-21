@@ -1,4 +1,5 @@
 {% extends "applications/base.html" %}
+{% load custom_tags %}
 
 {% block title %}Job Applications{% endblock %}
 
@@ -9,6 +10,7 @@
             <tr>
                 <th>Position</th>
                 <th>Company</th>
+                <th>City</th>
                 <th>Status</th>
                 <th>Notes</th>
                 <th>Actions</th>
@@ -18,7 +20,24 @@
             {% for job in jobs %}
             <tr>
                 <td><a href="{% url 'edit_job' job.id %}" class="job-title-link"> {{ job.position }}</a></td>
-                <td> {{ job.company }}</td>
+                <td>
+                    {% if job.get_logo_url %}
+                        <img src="{{ job.get_logo_url }}" alt="{{ job.company }} logo" style="height: 24px; vertical-align: middle; margin-right: 8px;">
+                    {% endif %}
+                    {{ job.company }}
+                </td>
+                <td>
+                    {{ job.city }}
+                    {% with job_id=job.id %}
+                        {% with weather=weather_data|get_item:job_id %}
+                            {% if weather %}  
+                                <br>
+                                <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="icon" height="32">
+                                {{ weather.temp }}°F, {{ weather.condition }}
+                            {% endif %}
+                        {% endwith %}
+                    {% endwith %}
+                </td>
                 <td> {{ job.status }}</td>
                 <td title="{{ job.notes }}"> {{ job.notes|truncatechars:40 }}</td>
                 <td>
