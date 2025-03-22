@@ -5,7 +5,7 @@
 ### Description: Full-stack Django web app to track job applications, including live weather by city, company logos and Bootstrap UI. 
 
 ### Features:
-This full-stack web app features the following:
+    This full-stack web app features the following:
     - Full CRUD functionality (Create, Read, Update, Delete job applications)
     - Live weather integration using OpenWeatherMap API
     - Company logos using Clearbit Logo API
