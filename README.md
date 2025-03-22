@@ -18,11 +18,19 @@ This full-stack web app features the following:
         - OpenWeatherMap (real-time weather by city)
         - Clearbit Logo API (company logos)
 
+## Screenshots:
+
+### Job List Page
+![Job List](screenshots/job_list.png)
+
+### Add Job Form
+![Add Job](screenshots/add_job.png)
+
 ### Ideas for Future Enhancements:
     - User authentication (multi-user capabilities)
     - Calendar/email integration 
     - AI resume tailoring
     - Search capabilities
     - Filtering
-    
+
 
